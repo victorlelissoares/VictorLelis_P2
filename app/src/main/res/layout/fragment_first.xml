@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnTime"
+        android:layout_width="296dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="217dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txt_times"
+            android:layout_width="118dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="148dp"
+            android:layout_marginTop="28dp"
+            android:text="Times"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_time"
+            android:layout_width="108dp"
+            android:layout_height="101dp"
+            android:src="@drawable/times_3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnJogador"
+        android:layout_width="296dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTime">
+
+        <TextView
+            android:id="@+id/txt_jogador"
+            android:layout_width="118dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="147dp"
+            android:layout_marginTop="34dp"
+            android:text="Jogadores"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="129dp"
+            android:layout_height="101dp"
+            android:src="@drawable/jogador"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
