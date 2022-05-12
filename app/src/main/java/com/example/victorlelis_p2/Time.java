@@ -1,5 +1,7 @@
 package com.example.victorlelis_p2;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Time implements Serializable {
@@ -22,11 +24,9 @@ public class Time implements Serializable {
         this.name = name;
     }
 
+    @NonNull
     @Override
     public String toString() {
-        return "Time{" +
-                "idTime=" + idTime +
-                ", name='" + name + '\'' +
-                '}';
+        return "Time: " + name;
     }
 }
