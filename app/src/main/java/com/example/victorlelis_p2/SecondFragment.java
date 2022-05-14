@@ -69,7 +69,7 @@ public class SecondFragment extends Fragment {
             v, ContextMenu.ContextMenuInfo menuInfo){
         MenuItem mDelete = menu.add(Menu.NONE, 1, 1,"Deletar Time");
         MenuItem mEdita = menu.add(Menu.NONE, 2, 2,"Editar Time");
-        MenuItem mSair = menu.add(Menu.NONE, 3, 3,"Cancela");
+        MenuItem mSair = menu.add(Menu.NONE, 3, 3,"Cancelar");
         mDelete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {

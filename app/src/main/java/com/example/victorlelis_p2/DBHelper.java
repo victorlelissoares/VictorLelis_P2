@@ -23,12 +23,19 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COL_NAME = "name";
     private static final String TABLE_TIME_CREATE = "create table "+ TABLE_TIME_NAME  +
             "("+ COL_ID + " integer primary key autoincrement, "+ COL_NAME + " text not null);";
-/*    private static final String TABLE_CREATE="create table "+TABLE_NAME+
-            "("+COL_ID+" integer primary key autoincrement, "+
-            COL_NAME+" text not null, "+COL_EMAIL+" text not null, " +
-            COL_USER+" text not null, "+COL_PASS+" text not null);";*/
+
 
     /*variaveis para a criação da tabela jogador*/
+    private  static final String TABLE_JOGADOR_NAME = "jogador";
+    private  static final String COL_ID_JOGADOR = "idJogador";
+    private  static final String COL_ID_TIME = "idTime";//chave estrangeira para a tabela times
+    private  static final String COL_NAME_JOGADOR = "nome";
+    private  static final String COL_CPF_JOGADOR = "cpf";
+    private  static final String COL_ANO_JOGADOR = "anoNascimento";
+    private static final String TABLE_JOGADOR_CREATE = "create table "+ TABLE_JOGADOR_NAME  +
+            "("+ COL_ID_JOGADOR + " integer primary key autoincrement, " + COL_ID_TIME + " integer not null, " +
+            COL_NAME_JOGADOR + " text not null, " + COL_CPF_JOGADOR + " text not null, " + COL_ANO_JOGADOR +
+            " integer not null, " + "FOREIGN KEY(idTime) REFERENCES times(id));";
 
 
     SQLiteDatabase db;
@@ -40,7 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_TIME_CREATE);
-        /*db.execSQL(TABLE_JOGADOR_CREATE);*/
+        db.execSQL(TABLE_JOGADOR_CREATE);
         this.db = db;
     }
 
@@ -48,9 +55,33 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String query = "DROP TABLE IF EXISTS "+ TABLE_TIME_NAME;
         db.execSQL(query);
+        query = "DROP TABLE IF EXISTS "+ TABLE_JOGADOR_NAME;
+        db.execSQL(query);
         this.onCreate(db);
     }
 
+    //métodos referentes a tabela jogador
+    public void insereTime(Jogador j){
+        db = this.getWritableDatabase();
+        db.beginTransaction();
+
+        try{
+            ContentValues values = new ContentValues();
+            values.put(COL_ID_TIME, j.getIdTime());
+            values.put(COL_NAME_JOGADOR, j.getNome());
+            values.put(COL_CPF_JOGADOR, j.getCpf());
+            values.put(COL_ANO_JOGADOR, j.getAnoNascimento());
+            db.insertOrThrow(TABLE_JOGADOR_NAME, null, values);
+            db.setTransactionSuccessful();
+        }catch(Exception e){
+            Log.d(TAG, "erro ao inserir na tabela jogador");
+        }finally {
+            db.endTransaction();
+        }
+
+    }
+
+    //métodos referentes a tabela times
     public void insereTime(Time t){
         db = this.getWritableDatabase();
         db.beginTransaction();

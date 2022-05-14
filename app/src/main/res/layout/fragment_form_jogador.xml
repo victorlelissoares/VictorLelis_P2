@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormJogadorFragment" >
+    tools:context=".FormJogadorFragment">
 
     <EditText
         android:id="@+id/txt_nome"
@@ -21,11 +21,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/txt_cpf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="000.000.000-01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_times" />
+
+    <EditText
         android:id="@+id/txt_ano_nascimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="number"
         android:minHeight="48dp"
@@ -33,36 +46,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_cpf" />
 
-    <EditText
-        android:id="@+id/txt_cpf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="000.000.000-01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nome" />
-
     <Button
         android:id="@+id/btnfinalizarjogador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="62dp"
+        android:layout_width="217dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="64dp"
         android:text="Finalizar Cadastro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_time" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_ano_nascimento" />
 
     <Spinner
-        android:id="@+id/spinner_time"
-        android:layout_width="193dp"
+        android:id="@+id/spinner_times"
+        android:layout_width="211dp"
         android:layout_height="48dp"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="34dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_ano_nascimento"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nome"
         tools:ignore="SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

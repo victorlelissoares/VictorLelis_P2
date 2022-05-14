@@ -65,7 +65,9 @@
         android:name="com.example.victorlelis_p2.FormJogadorFragment"
         android:label="@string/FormJogador_fragment_label"
         tools:layout="@layout/fragment_form_jogador">
-
+        <action
+            android:id="@+id/action_FormJogadorFragment_to_ThirdFragment"
+            app:destination="@+id/ThirdFragment"/>
     </fragment>
 
 
