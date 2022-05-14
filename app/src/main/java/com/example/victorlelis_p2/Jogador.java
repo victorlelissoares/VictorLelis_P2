@@ -1,12 +1,11 @@
 package com.example.victorlelis_p2;
 
-import androidx.annotation.NonNull;
-
 import java.io.Serializable;
 
 public class Jogador implements Serializable {
     private int idJogador;
     private int idTime;//chave estrangeira
+    private String nomeTime;
     private String nome;
     private String cpf;
     private int anoNascimento;
@@ -25,6 +24,14 @@ public class Jogador implements Serializable {
 
     public void setIdTime(int idTime) {
         this.idTime = idTime;
+    }
+
+    public String getNomeTime() {
+        return nomeTime;
+    }
+
+    public void setNomeTime(String nomeTime) {
+        this.nomeTime = nomeTime;
     }
 
     public String getNome() {
@@ -49,5 +56,15 @@ public class Jogador implements Serializable {
 
     public void setAnoNascimento(int anoNascimento) {
         this.anoNascimento = anoNascimento;
+    }
+
+    @Override
+    public String toString() {
+        return "Jogador{" +
+                "nomeTime='" + nomeTime + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", anoNascimento=" + anoNascimento +
+                '}';
     }
 }

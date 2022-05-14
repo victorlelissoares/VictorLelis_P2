@@ -74,11 +74,12 @@ public class SecondFragment extends Fragment {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 long retornoBD=1;
-                helper=new DBHelper(getContext());
+                helper = new DBHelper(getContext());
                 retornoBD = helper.excluirTime(t);
+                alert("valor do retorno" + Integer.toString((int)retornoBD));
                 helper.close();
                 if( retornoBD == -1){
-                    alert("Erro de exclusão!");
+                    alert("Erro de exclusão, time vinculado a jogador(es)!");
                 }
                 else{
                     alert("Registro excluído com sucesso!");
@@ -114,7 +115,7 @@ public class SecondFragment extends Fragment {
             arrayAdapterTime = new ArrayAdapter<Time>(getContext(),
                     android.R.layout.simple_list_item_1, listTime);
             binding.listTimes.setAdapter(arrayAdapterTime);
-        }
+       }
 
     }
 

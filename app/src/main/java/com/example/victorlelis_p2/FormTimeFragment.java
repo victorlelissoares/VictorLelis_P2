@@ -18,6 +18,7 @@ public class FormTimeFragment extends Fragment {
     Time t;
     DBHelper helper;
     Time altTime;
+
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
@@ -43,8 +44,6 @@ public class FormTimeFragment extends Fragment {
 
         if(altTime!=null){
             binding.btnFinalizarTime.setText("Alterar Time");
-            Toast toast = Toast.makeText(getContext(), " vai alterar!", Toast.LENGTH_SHORT);
-            toast.show();
             binding.txtNomeTime.setText(altTime.getName());
         }
 
