@@ -22,6 +22,7 @@ public class FormJogadorFragment extends Fragment {
     ArrayList<Time> listTime;
     Time tJogador;
     Jogador jogador;
+    Jogador altJogador;
     ArrayAdapter<Time> dataAdapter;
 
     @Override
@@ -41,24 +42,51 @@ public class FormJogadorFragment extends Fragment {
         loadDataSpinner();//carrega o spinner com os times cadastrados
         jogador = new Jogador();
 
+        Bundle bundle = getArguments();
+        /*caso seja diferente de null
+        quer dizer que é uma alteração de jogador e não cadastro*/
+        if(bundle!=null) {
+            altJogador = (Jogador) bundle.getSerializable("jogador");
+            binding.btnfinalizarjogador.setText("Alterar Cadastro");
+            binding.txtNome.setText(altJogador.getNome());
+            binding.txtCpf.setText(altJogador.getCpf());
+            binding.txtAnoNascimento.setText(Integer.toString(altJogador.getAnoNascimento()));
+        }
+
         binding.btnfinalizarjogador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 tJogador = (Time) binding.spinnerTimes.getSelectedItem();//pega do spinner, o time selecionado
 
-                if(tJogador != null){//caso tenha algum time cadastrado
-                    jogador.setNome(binding.txtNome.getText().toString());
-                    jogador.setIdTime(tJogador.getIdTime());
-                    jogador.setNomeTime(tJogador.getName());
-                    jogador.setCpf(binding.txtCpf.getText().toString());
-                    jogador.setAnoNascimento( Integer.parseInt(binding.txtAnoNascimento.getText().toString()) );
-                    helper.insereJogador(jogador);
+                if(altJogador != null) {//quer dizer que é uma alteração
+                    altJogador.setIdTime(tJogador.getIdTime());
+                    altJogador.setNome(binding.txtNome.getText().toString());
+                    altJogador.setIdTime(tJogador.getIdTime());
+                    altJogador.setNomeTime(tJogador.getName());
+                    altJogador.setCpf(binding.txtCpf.getText().toString());
+                    altJogador.setAnoNascimento( Integer.parseInt(binding.txtAnoNascimento.getText().toString()) );
+
+                    helper.atualizarJogador(altJogador);
 
                     Toast toast = Toast.makeText(getContext(),
-                            "Jogador "+ jogador.getNome() +" cadastrado com sucesso!", Toast.LENGTH_SHORT);
+                            "Jogador "+ altJogador.getNome() +" alterado com sucesso!", Toast.LENGTH_SHORT);
                     toast.show();
                 }
-                else{//caso não
+                else{
+                    if(tJogador != null){//caso tenha algum time cadastrado
+                        jogador.setNome(binding.txtNome.getText().toString());
+                        jogador.setIdTime(tJogador.getIdTime());
+                        jogador.setNomeTime(tJogador.getName());
+                        jogador.setCpf(binding.txtCpf.getText().toString());
+                        jogador.setAnoNascimento( Integer.parseInt(binding.txtAnoNascimento.getText().toString()) );
+                        helper.insereJogador(jogador);
+
+                        Toast toast = Toast.makeText(getContext(),
+                                "Jogador "+ jogador.getNome() +" cadastrado com sucesso!", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                }
+                if(tJogador == null){//caso não
                     Toast toast = Toast.makeText(getContext(), "Cadastre um time antes de cadastrar um jogador!", Toast.LENGTH_LONG);
                     toast.show();
                 }

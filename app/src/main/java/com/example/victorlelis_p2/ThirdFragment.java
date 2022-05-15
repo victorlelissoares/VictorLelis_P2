@@ -88,8 +88,8 @@ public class ThirdFragment extends Fragment {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View
             v, ContextMenu.ContextMenuInfo menuInfo){
-        MenuItem mDelete = menu.add(Menu.NONE, 1, 1,"Deletar Time");
-        MenuItem mEdita = menu.add(Menu.NONE, 2, 2,"Editar Time");
+        MenuItem mDelete = menu.add(Menu.NONE, 1, 1,"Deletar Jogador");
+        MenuItem mEdita = menu.add(Menu.NONE, 2, 2,"Editar Jogador");
         MenuItem mSair = menu.add(Menu.NONE, 3, 3,"Cancelar");
         mDelete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -108,16 +108,16 @@ public class ThirdFragment extends Fragment {
                 return false; }
         });
 
-        /*mEdita.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        mEdita.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("time", t);
-                Navigation.findNavController(v).navigate(R.id.FormTimeFragment, bundle);
+                bundle.putSerializable("jogador", j);
+                Navigation.findNavController(v).navigate(R.id.FormJogadorFragment, bundle);
                 preencheListViewJogador();
                 return false;
             }
-        });*/
+        });
 
         super.onCreateContextMenu(menu, v, menuInfo);
     }

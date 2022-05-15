@@ -134,14 +134,21 @@ public class DBHelper extends SQLiteOpenHelper {
         return retornoDB;
     }
 
-    /*public void atualizarJogador(Jogador t){
+    public void atualizarJogador(Jogador j){
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COL_NAME, t.getName());
-        String[] args = {String.valueOf(t.getIdTime())};
-        long retornoDB = db.update(TABLE_TIME_NAME, values, "id = ?", args);
+
+        values.put(COL_ID_JOGADOR, j.getIdJogador());
+        values.put(COL_ID_TIME, j.getIdTime());
+        values.put(COL_NAME_TIME, j.getNomeTime());
+        values.put(COL_NAME_JOGADOR, j.getNome());
+        values.put(COL_CPF_JOGADOR, j.getCpf());
+        values.put(COL_ANO_JOGADOR, j.getAnoNascimento());
+
+        String[] args = {String.valueOf(j.getIdJogador())};
+        long retornoDB = db.update(TABLE_JOGADOR_NAME, values, "idJogador = ?", args);
         db.close();
-    }*/
+    }
 
 
     //métodos referentes a tabela times
@@ -189,18 +196,20 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public long excluirTime(Time t){
-        long retornoDB = -1;
         db = this.getWritableDatabase();
         Cursor cursor;
-        String query = "SELECT jogador.idJogador FROM jogador INNER JOIN times ON jogador.idtime = times.id;" ;
+        String query = "SELECT * FROM jogador INNER JOIN times ON jogador.idtime = times.id;" ;
         cursor = db.rawQuery(query, null);
-        cursor.close();
-        if(cursor == null) {
+
+
+        if(cursor.getCount() == 0) {
             String[] args = {String.valueOf(t.getIdTime())};
-            retornoDB = db.delete(TABLE_TIME_NAME, COL_ID + "=?", args);
+            db.delete(TABLE_TIME_NAME, COL_ID + "=?", args);
+
         }
 
-        return retornoDB;
+
+        return cursor.getCount();
     }
 
     public void atualizarTime(Time t){

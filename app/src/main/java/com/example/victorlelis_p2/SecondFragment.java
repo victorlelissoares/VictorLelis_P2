@@ -73,15 +73,15 @@ public class SecondFragment extends Fragment {
         mDelete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                long retornoBD=1;
+                long retornoBD;
                 helper = new DBHelper(getContext());
                 retornoBD = helper.excluirTime(t);
-                alert("valor do retorno" + Integer.toString((int)retornoBD));
+                //alert("Valor de Retorno" + retornoBD);
                 helper.close();
-                if( retornoBD == -1){
+                if( retornoBD > 0){
                     alert("Erro de exclusão, time vinculado a jogador(es)!");
                 }
-                else{
+                else if(retornoBD == 0){
                     alert("Registro excluído com sucesso!");
                 }
                 preencheListViewTime();
