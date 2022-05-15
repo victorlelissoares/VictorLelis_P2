@@ -14,9 +14,9 @@
         android:layout_marginStart="88dp"
         android:layout_marginTop="60dp"
         android:ems="10"
+        android:hint="Nome do Jogador"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Nome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,9 +27,9 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="36dp"
         android:ems="10"
+        android:hint="Cpf do Jogador"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="000.000.000-01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_times" />
 
@@ -40,9 +40,9 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="32dp"
         android:ems="10"
+        android:hint="Ano de Nascimento"
         android:inputType="number"
         android:minHeight="48dp"
-        android:text="1999"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_cpf" />
 

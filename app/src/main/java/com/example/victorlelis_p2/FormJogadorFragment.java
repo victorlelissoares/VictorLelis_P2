@@ -74,16 +74,23 @@ public class FormJogadorFragment extends Fragment {
                 }
                 else{
                     if(tJogador != null){//caso tenha algum time cadastrado
-                        jogador.setNome(binding.txtNome.getText().toString());
-                        jogador.setIdTime(tJogador.getIdTime());
-                        jogador.setNomeTime(tJogador.getName());
-                        jogador.setCpf(binding.txtCpf.getText().toString());
-                        jogador.setAnoNascimento( Integer.parseInt(binding.txtAnoNascimento.getText().toString()) );
-                        helper.insereJogador(jogador);
+                        String message = "Jogador "+ binding.txtNome.getText().toString()
+                                +" cadastrado com sucesso!";
+                        try {
+                            jogador.setNome(binding.txtNome.getText().toString());
+                            jogador.setIdTime(tJogador.getIdTime());
+                            jogador.setNomeTime(tJogador.getName());
+                            jogador.setCpf(binding.txtCpf.getText().toString());
+                            jogador.setAnoNascimento( Integer.parseInt(binding.txtAnoNascimento.getText().toString()) );
+                            helper.insereJogador(jogador);
+                        }catch (Exception e){
+                            message = "Não deixe campos em branco!";
+                        }finally {
+                            Toast toast = Toast.makeText(getContext(),
+                                    message, Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
 
-                        Toast toast = Toast.makeText(getContext(),
-                                "Jogador "+ jogador.getNome() +" cadastrado com sucesso!", Toast.LENGTH_SHORT);
-                        toast.show();
                     }
                 }
                 if(tJogador == null){//caso não

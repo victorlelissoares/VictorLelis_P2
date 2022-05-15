@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,8 @@ public class ThirdFragment extends Fragment {
     ArrayList<Jogador> listJogador;
     ArrayAdapter<Jogador> arrayAdapterTime;
     Jogador j;
+    String filter;
+
 
 
 
@@ -45,7 +48,17 @@ public class ThirdFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         registerForContextMenu(binding.listJogadores);
-        preencheListViewJogador();
+        preencheListViewJogador(null);
+
+        binding.btnFiltro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filter = binding.txtFiltro.getText().toString();//pega o time digitado
+                //alert(filter);
+                preencheListViewJogador(filter);
+            }
+        });
+
 
 
         binding.btnCadastrarjogador.setOnClickListener(new View.OnClickListener() {
@@ -67,9 +80,9 @@ public class ThirdFragment extends Fragment {
 
     }
 
-    private void preencheListViewJogador() {
+    private void preencheListViewJogador(String time) {
         helper = new DBHelper(getActivity());
-        listJogador = helper.listJogador();
+        listJogador = helper.listJogador(time);
         helper.close();
 
         if(listJogador!=null){
@@ -104,7 +117,7 @@ public class ThirdFragment extends Fragment {
                 else{
                     alert("Registro excluído com sucesso!");
                 }
-                preencheListViewJogador();
+                preencheListViewJogador(null);
                 return false; }
         });
 
@@ -114,7 +127,7 @@ public class ThirdFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("jogador", j);
                 Navigation.findNavController(v).navigate(R.id.FormJogadorFragment, bundle);
-                preencheListViewJogador();
+                preencheListViewJogador(null);
                 return false;
             }
         });

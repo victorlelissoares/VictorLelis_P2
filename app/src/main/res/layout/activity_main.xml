@@ -25,8 +25,8 @@
         android:background="#FFFFFF"
         android:backgroundTint="@color/white" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    com.google.android.material.floatingactionbutton.FloatingActionButton        android:id="@+id/mainFab"
+        android:contentDescription="@string/fab_transformation_scrim_behavior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

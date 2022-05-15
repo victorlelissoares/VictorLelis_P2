@@ -9,9 +9,9 @@
 
     <ListView
         android:id="@+id/list_jogadores"
-        android:layout_width="408dp"
-        android:layout_height="497dp"
-        android:layout_marginTop="102dp"
+        android:layout_width="412dp"
+        android:layout_height="455dp"
+        android:layout_marginTop="136dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,4 +24,28 @@
         android:text="Cadastrar Jogador"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_jogadores" />
+
+    <EditText
+        android:id="@+id/txtFiltro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="49dp"
+        android:ems="10"
+        android:hint="Pesquise Por Time"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnFiltro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="48dp"
+        android:text="Aplicar Filtro"
+        app:layout_constraintStart_toEndOf="@+id/txtFiltro"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

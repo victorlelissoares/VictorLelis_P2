@@ -15,6 +15,7 @@
         android:layout_marginTop="108dp"
         android:autoText="false"
         android:ems="10"
+        android:hint="Nome do Time"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"

@@ -83,7 +83,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Jogador> listJogador() {
+    public ArrayList<Jogador> listJogador(String time) {
         /*String query = "SELECT jogador.nome, times.name FROM jogador  INNER JOIN times ON jogador.idtime = times.id;";
         db = getReadableDatabase();
         Cursor cursor;
@@ -101,16 +101,35 @@ public class DBHelper extends SQLiteOpenHelper {
         /*lembrar de modificar para receber um argumento como filtro*/
         String[] coluns = {COL_ID_JOGADOR ,COL_ID_TIME, COL_NAME_TIME, COL_NAME_JOGADOR, COL_CPF_JOGADOR,
                 COL_ANO_JOGADOR};//todas as colunas
-        //ordena por nome todas as linhas retornadas
-        Cursor cursor = getReadableDatabase().query(
-                TABLE_JOGADOR_NAME,
-                coluns,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null);
+        String[] whereArg = {time};
+        Cursor cursor;
+
+        if(time == null || time.length() == 0){
+            cursor = getReadableDatabase().query(
+                    TABLE_JOGADOR_NAME,
+                    coluns,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null);
+        }
+        else{
+            //ordena por nome todas as linhas retornadas
+            cursor = getReadableDatabase().query(
+                    TABLE_JOGADOR_NAME,
+                    coluns,
+                    COL_NAME_TIME+"=?",
+                    whereArg,
+                    null,
+                    null,
+                    null,
+                    null);
+        }
+
+
+
         ArrayList<Jogador> list = new ArrayList<Jogador>();
         while(cursor.moveToNext()){
             Jogador j = new Jogador();

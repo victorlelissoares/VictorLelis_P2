@@ -55,7 +55,7 @@ public class FormTimeFragment extends Fragment {
                 altTime.setName(nomeTime);
                 helper.atualizarTime(altTime);
                 Toast toast = Toast.makeText(getContext(),
-                        "Time"+ altTime.getName()+" alterado com sucesso!", Toast.LENGTH_SHORT);
+                        "Time "+ altTime.getName()+" alterado com sucesso!", Toast.LENGTH_SHORT);
                 toast.show();
             }
             else {
